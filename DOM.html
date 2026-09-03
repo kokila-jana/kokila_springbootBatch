@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 id="a"></h1>
+<script>
+let z,text,dt
+z=new DOMParser();
+text="<college> <student>"+"<name>Kokila</name>"+
+"<email> kokila@gmail.com</email>"+"</student>"+" <student> "+
+"<name>Jana</name>"+
+" <email>Jana@gmail.com</email>"+" </student> </college>"
+dt=z.parseFromString(text,"text/xml");
+document.getElementById("a").innerHTML=dt.getElementsByTagName("name")[1].
+childNodes[0].nodeValue;
+	
+</script>
+
+</body>
+</html>
