@@ -1,0 +1,3336 @@
+Advanced Java:
+
+pre-request:
+-Core Java
+-Web Designing
+
+Important:
+1.Servlets Program
+2.Spring Boot Framework
+
+Software IDE:
+-Eclipse
+https://www.eclipse.org/downloads/
+
+-Apache Tomcat Server:
+https://tomcat.apache.org/download-90.cgi
+
+-Oracle
+
+Basics of SQL:
+-SQL stands for Structure Query Language
+-Allow us to Store and manipulate
+-SQL Operation(create DB, create table, insert,retrieve,update,delete)
+
+
+statements in SQL:
+-Action need to be performed for Database
+
+DDL,DML:
+
+DDL: Data Definition Language
+-DDL allow to create DB,Modify, Drop, Rename
+
+Commands:
+
+Create:
+
+SQL> create table keerthi(Id int, name varchar(255),addr varchar(200));
+
+Table created.
+
+SQL>
+
+------------------
+Drop:
+
+SQL> drop table keerthi;
+
+Table dropped.
+---------------------------
+
+Alter:
+SQL> alter table keerthi add email varchar(100);
+
+Table altered.
+
+Rename:
+
+SQL> alter table keerthi rename column addr to address;
+
+Table altered.
+------------------------------
+Truncate:
+SQL> truncate table keerthi;
+
+Table truncated.
+
+--------------------------------------------------------
+SQL> connect system/anu;
+ERROR:
+ORA-28001: the password has expired
+
+
+Changing password for system
+New password:
+Retype new password:
+Password changed
+Connected.
+--------------------------------------------------------
+DML statements:Data Manipulation Language
+
+-SQL Operation(insert,retrieve,update,delete)
+
+Insert:
+
+SQL> insert into keerthi(id,name,address,email) values(3,'bhava','tamilnadu','bhava@gmail');
+
+1 row created.
+
+SQL> select * from keerthi;
+
+---------------------------------------
+update:
+
+SQL> update keerthi set name='anupriyan', email='anupriyan@gmail.com'  where id=1;
+
+1 row updated.
+
+SQL> select * from keerthi;
+-----------------------------------------
+Delete:
+SQL> delete from keerthi where id=1;
+
+1 row deleted.
+-------------------------------------------------
+
+What is JDBC: Java DataBase Connectivity
+
+-One of the Java API
+-connect DB
+
+Link: https://drive.google.com/file/d/1mJTqLP-9k3b9pBOwrGv2G_SMVpo1Ozlv/view?usp=sharing
+
+JDBC - Driver
+OJDBC- Driver
+
+create:
+
+import java.sql.*;
+class CreateTable 
+{
+   public static void main(String[] args) throws SQLException ,ClassNotFoundException
+   {
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "DATABASENAME", "PASSWORD");
+	Statement st = con.createStatement();
+st.executeUpdate( "Create Table Amazon( Id varchar2(10),Name varchar2(20),Location varchar2(20))" );
+   System.out.println("Table is created");
+   }
+}
+
+
+import java.sql.*;
+class InsertTable
+{
+   public static void main(String[] args) throws SQLException, 
+                                                     ClassNotFoundException
+   {
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "ANUP", "anup");
+	Statement st = con.createStatement();
+	st.executeUpdate("Insert into Amazon values('E101','Bala','Chennai')");
+	st.executeUpdate("Insert into Amazon values('E102','David','Kerala')");
+	st.executeUpdate("Insert into Amazon values('E103','Jagan','Bangalore')");
+	st.executeUpdate("Insert into Amazon values('E104','Mohan','Andhra')");
+	System.out.println("Details are inserted");
+   }
+}
+
+import java.sql.*;
+class UpdateTable 
+{
+   public static void main(String[] args) throws 
+                               SQLException,ClassNotFoundException         
+   {
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "ANUP", "anup");
+	Statement st = con.createStatement();
+	st.executeUpdate("Update Amazon Set Location = 'Mumbai' where name = 'David'");
+	System.out.println("Details are updated");
+    }
+}
+
+
+import java.sql.*;
+class DeleteTable 
+{
+   public static void main(String[] args) throws SQLException,ClassNotFoundException 
+   {
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "ANUP", "anup");
+	Statement st = con.createStatement();
+	st.executeUpdate("Delete from Amazon where Id='E103'");
+
+
+	System.out.println("Data is deleted");
+   }
+}
+
+--------------------------------------------------------------------
+
+Overview of HTML:
+
+HTML - Hyper Text Markup Language
+-Designing the web Pages
+-UI
+-Web Page Content in HTML can be added by tags
+
+<html attributes> - open tag
+
+</html> -close tag
+
+Paragraph: <p>
+table- <table><tr><th><td><thead><tbody>
+form - <form><input><label><button><option>..
+Image - <img>
+
+-------------------
+
+How to create your first HTML page:
+
+Syntax:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
+
+----------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Good Morning all</h1>
+</body>
+</html>
+
+---------------------------------------
+
+Tags & Attribute:
+
+Tags: <html><head><body><title><style><script>
+<p>
+<table>
+<form>
+<marquee>
+<nav>
+<a href="">
+<img>
+<i>
+<small>
+<h1><h2>....<h6>
+<div>
+<section>
+<media>
+
+
+
+Attributes:
+
+-Add additional information to our HTML
+-<form method="get" width="100%">
+-<p class="" id="" name="">
+-<input class="" name="" type="text" required>
+
+Style:
+
+3 Types of Styles:
+
+-External
+-Internal ----------Learn
+-Inline
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.para{
+color:red;
+font-size:25px;
+font-weight:bold;
+background-color:yellow;
+}
+</style>
+</head>
+<body>
+<h1>Good Morning all</h1>
+<p class="para">Hello Everyone, Good morning all, Happy to welcome you all</p>
+</body>
+</html>
+
+----------------------------------------------------------------------
+Creating tables:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.para{
+color:red;
+font-size:25px;
+font-weight:bold;
+background-color:yellow;
+}
+table{
+width:100%;
+border-collapse:collapse;
+}
+th,td{
+padding:10px;
+border:1px solid blue;
+}
+th{
+color:green;
+background-color:pink;
+}
+</style>
+</head>
+<body>
+<h1>Good Morning all</h1>
+<p class="para">Hello Everyone, Good morning all, Happy to welcome you all</p>
+<table>
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Mark</th>
+</tr>
+
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+
+<tr>
+<td>Keerthi</td>
+<td>keerthi@gmail.com</td>
+<td>9444848475</td>
+<td>80</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+
+</table>
+</body>
+</html>
+
+---------------------------------------------------------
+Creating links and lists:
+
+HTML Link:Link is Available everyplace in webpage
+-Redirect page
+
+HTML - Hyperlink
+
+<a href="">
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.para{
+color:red;
+font-size:25px;
+font-weight:bold;
+background-color:yellow;
+}
+table{
+width:100%;
+border-collapse:collapse;
+}
+th,td{
+padding:10px;
+border:1px solid blue;
+}
+th{
+color:green;
+background-color:pink;
+}
+</style>
+</head>
+<body>
+<a href="https://livewireindia.com/">Livewire</a>
+<h1>Good Morning all</h1>
+<p class="para">Hello Everyone, Good morning all, Happy to welcome you all</p>
+<table>
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Mark</th>
+</tr>
+
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+
+<tr>
+<td>Keerthi</td>
+<td>keerthi@gmail.com</td>
+<td>9444848475</td>
+<td>80</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+
+</table>
+</body>
+</html>
+
+----------------------------------------
+
+lists: Collection of data
+<li>
+
+<ul>: unorder list
+
+<ol>: order list
+
+<dl>: <dt>: term <dd>: definition
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.para{
+color:red;
+font-size:25px;
+font-weight:bold;
+background-color:yellow;
+}
+table{
+width:100%;
+border-collapse:collapse;
+}
+th,td{
+padding:10px;
+border:1px solid blue;
+}
+th{
+color:green;
+background-color:pink;
+}
+</style>
+</head>
+<body>
+<a href="https://livewireindia.com/">Livewire</a>
+<h1>Good Morning all</h1>
+<div>
+
+<ul>
+<h1>College : Unorder list</h1>
+ <li>Arya</li>
+ <li>Bala</li>
+ <li>Hari</li>
+ <li>Jai</li>
+
+</ul>
+
+<ol>
+<h1>College : Order list</h1>
+ <li>Arya</li>
+ <li>Bala</li>
+ <li>Hari</li>
+ <li>Jai</li>
+</ol>
+
+<dl>
+  <dt>Apple</dt>
+  <dd>Good for health</dd>
+</dl>
+</div>
+<p class="para">Hello Everyone, Good morning all, Happy to welcome you all</p>
+<table>
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Mark</th>
+</tr>
+
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+
+<tr>
+<td>Keerthi</td>
+<td>keerthi@gmail.com</td>
+<td>9444848475</td>
+<td>80</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+
+</table>
+</body>
+</html>
+-------------------------------------------------------------
+Forms in HTML: Collect user input
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.para{
+color:red;
+font-size:25px;
+font-weight:bold;
+background-color:yellow;
+}
+table{
+width:100%;
+border-collapse:collapse;
+}
+th,td{
+padding:10px;
+border:1px solid blue;
+}
+th{
+color:green;
+background-color:pink;
+}
+.body{
+background-color:lightgreen;
+}
+</style>
+</head>
+<body class='body'>
+<a href="https://livewireindia.com/">Livewire</a>
+<h1>Good Morning all</h1>
+<div>
+
+<ul>
+<h1>College : Unorder list</h1>
+ <li>Arya</li>
+ <li>Bala</li>
+ <li>Hari</li>
+ <li>Jai</li>
+
+</ul>
+
+<ol>
+<h1>College : Order list</h1>
+ <li>Arya</li>
+ <li>Bala</li>
+ <li>Hari</li>
+ <li>Jai</li>
+</ol>
+
+<dl>
+  <dt>Apple</dt>
+  <dd>Good for health</dd>
+</dl>
+</div>
+<p class="para">Hello Everyone, Good morning all, Happy to welcome you all</p>
+<table>
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Mark</th>
+</tr>
+
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+
+<tr>
+<td>Keerthi</td>
+<td>keerthi@gmail.com</td>
+<td>9444848475</td>
+<td>80</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Bhava</td>
+<td>bhav@gmail.com</td>
+<td>9857465647</td>
+<td>70</td>
+</tr>
+
+</table>
+<br><hr>
+<form method="" action="">
+<h1>Login Page</h1>
+<input type="text" placeholder="username" required>
+<br><br>
+<input type="password" placeholder="password" required>
+<br><br>
+<button type="submit">Login</button>
+</form>
+
+</body>
+</html>
+
+------------------------------------------------------------------------------
+
+XML Fundamentals:
+
+-XML Stands for Extensible Markup Language
+-help to store data from Design 
+
+Syntax:
+<? xml version="1.0" encoding="UTF-8" ?>
+
+XML Document Structure:
+
+Root - Parent - <college>
+Child -<student>
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<college>
+ <student>
+ <name lang="en">Anup</name>
+ </student>
+ 
+ <student>
+ <name lang="en">Bala</name>
+ </student>
+ 
+</college>
+
+----------------------------------------------------
+XML Parsers:
+
+Convert Data into DOM object.
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 id="demo"></h1>
+<script>
+var z, Doct;
+var text="<college><student>"+
+"<name>Anup</name>"+"<email>anupgmail.com</email>"+"</student></college>";
+z=new DOMParser();
+Doct=z.parseFromString(text, "text/xml");
+
+document.getElementById("demo").innerHTML=
+	 Doct.getElementsByTagName("email")[0].childNodes[0].nodeValue;
+	 
+</script>
+</body>
+</html>
+
+--------------------------------------------------------
+XML DTDs:
+
+-XML Document Type Definition
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE college [
+<!ELEMENT student (name)>
+
+]>
+<college>
+ <student>
+ <name lang="en">Anup</name>
+ </student>
+ 
+ <student>
+ <name lang="en">Bala</name>
+ </student>
+ 
+</college>
+==========================================
+XMLSchema: Descripbe the structure of XML Docs
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:element name="college">
+	<xs:student>
+		<xs:element name="name" type="xs:string"/>
+		<xs:element name="email" type="xs:string"/>
+	</xs:student>
+</xs:element>
+
+-----------------------------------------------------
+Introduction to Web application:
+
+             HTTP Request
+Broswer (UI)-----------------Web Server(Backend)-------ServletProgram(API)--------Database
+              HTTP RESPONSE
+
+
+-------------------------------------------------------
+
+Building and deploying Web application:
+
+1.GO to Eclipse IDE
+2.File menu > New > Others
+3.web  >> Dynamic web project  >> project name >> next
+4.Configuration default
+5.Finish
+
+6.Project Strudture  >>src >> web app >>html or jsp file
+7.Start apache server 
+8.Right click on file >>> run on server
+
+
+-------------------------------------------------------
+Introduction to HTTP:
+
+-HTTP: Hyper Text Transfer Protocol
+-HTTP Protocol: Request/Response
+
+-----------------------------------------------------
+
+Basics of Servlet:
+
+-Servlet used for creating dynamic web application
+-servelt is an API to provide interface
+
+Terminology:
+-static vs dynamic: static are stable pages,  dynamic pages are more important
+-HTTP
+-GET/POST
+-Content type
+
+website:
+-collection of web pages
+-URL
+-www.domainname.com
+
+---------------------------------------------------------
+
+Servlet Life Cycle:
+1.servlet class
+2.create servlet instance
+3.call the init() 
+4.call the service()
+5.Close()
+
+
+-----------------------------
+
+Servlet Request and Response,
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/anu")
+public class anu extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+    public anu() {
+        
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		
+		out.print("<html><body>");
+		out.print("<h1>Hello Keerthi</h1>");
+		out.print("<h1>Good morning</h1>");
+		out.print("</body></html>");
+	}	
+
+}
+
+---------------------------------------------
+
+Servlet Handling:
+
+1.Status code
+2.exception type
+3.servelt name
+
+--------------------------------------------
+Exception handling:
+
+try
+catch
+throws
+throw
+
+------------------------------------------
+Cookie:
+
+Java:
+
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/Demo")
+public class Demo extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+   
+    public Demo() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Cookie z=new Cookie("Name",request.getParameter("name"));
+		
+		z.setMaxAge(60*60*24);
+		response.addCookie(z);
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		
+		out.print("<html><body>");
+		//out.print("<p>request.getParameter('name')</p>");
+		out.println("</body></html>");
+		
+		
+	}
+
+	
+
+}
+
+
+Html:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form method="GET" action="Demo">
+<input type="text" name="name" placeholder="Name"/>
+<input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+---------------------------------------------
+Session handling,:
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+@WebServlet("/Demo1")
+public class Demo1 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+ 
+    public Demo1() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession z=request.getSession(true);
+		
+		Date createtime=new Date(z.getCreationTime());
+		Date accesstime=new Date(z.getLastAccessedTime());
+		
+		String title="Hello welcome back";
+		String uid=new String("anup");
+		if(z.isNew()) {
+			title="Hello welcome";
+			z.setAttribute(title, uid);
+			
+		}
+		z.setAttribute(title,uid);
+		
+		response .setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		
+		String docType="<!doctype html public";
+		out.println(docType+
+				"<html>\n"+
+				"<body>\n"+
+				"<ul>\n"+
+				"<li><b>sessionId:</b>"+createtime+"\n"+
+				"<li><b>Access ID:</b>"+accesstime+"\n"+
+				"<li><b>User ID:</b>"+uid+"\n"+
+				"</ul>\n"+
+				"</body>"+
+				"</html>");			
+		
+		
+	}
+
+	
+}
+
+
+
+-------------------------------------------
+Page redirection:
+
+
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/Demo3")
+public class Demo3 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+    public Demo3() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		String z=new String("https://livewiresalem.com/");
+		response.setStatus(response.SC_MOVED_TEMPORARILY);
+		response.setHeader("Location", z);
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+
+
+--------------------------------------------
+Uploading Files:
+
+Link:  https://jar-download.com/maven-repository-class-search.php?search_box=com.oreilly.servlet.MultipartRequest
+
+ver: 05nov 2022
+ver:09may 2022
+
+Java:
+
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+
+
+
+@WebServlet("/Demo")
+public class Demo extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+   
+    
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		MultipartRequest z=new MultipartRequest(request,"D://ppt");
+		out.print("File Uploaded Successfully");
+		
+		
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+	
+
+	
+
+}
+
+
+Html:
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form method="POST" action="Demo" ENCTYPE="multipart/form-data">
+<input type="file" name="file"/>
+
+<br><br>
+<input type="submit" value="Upload"/>
+</form>
+
+</body>
+</html>
+
+---------------------------------------------
+Autorefreshing:
+
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/Autoref")
+public class Autoref extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+  
+    public Autoref() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		response.setIntHeader("Refresh", 10);
+		response.setContentType("text/html");
+		Format z=new SimpleDateFormat("dd.MM.yyyy.HH.mm.ss");
+		Date d=new Date();
+		String newDate=z.format(d);
+		PrintWriter out=response.getWriter();
+		out.print(newDate);
+		
+		
+		
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+
+
+-------------------------------------------------
+Introduction to JSP:
+
+JSP: Java Server Page
+-create dynamic web page
+-server side scripting language
+-secure
+-portable
+-HTML tag
+---------------------------------------------
+How to create your first JSP:
+
+1.GO to Eclipse IDE
+2.File menu > New > Others
+3.web  >> Dynamic web project  >> project name >> next
+4.Configuration default
+5.Finish
+
+6.Project Strudture  >>src >> web app >>html or jsp file
+7.Start apache server 
+8.Right click on file >>> run on server
+
+
+Program:
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Advanced Java Training</h1>
+</body>
+</html>
+
+----------------------------------------------------------
+Components of JSP:
+
+Comment: <% --hello-- %>
+
+Program:
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Advanced Java Training</h1>
+<%-- hello--%>
+</body>
+</html>
+
+
+Directive: <%@ page=""......%>, <%@ include '' %>
+
+Program:
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Advanced Java Training</h1>
+
+</body>
+</html>
+
+
+Declaration: <%! int mark=80; %>
+Program:
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Advanced Java Training</h1>
+<%! int age=50; %>
+<%=" your age is:"+age %>
+</body>
+</html>
+
+
+Scriplets: <% %>
+Program:
+
+Html:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="anu.jsp">
+<input type="text" name="name" placeholder="name">
+<input type="submit" value="submit">
+</form>
+</body>
+</html>
+
+Jsp:
+
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Advanced Java Training</h1>
+<%
+String z=request.getParameter("name"); 
+out.print("Your name is:"+z);
+%>
+</body>
+</html>
+
+
+Expression: <%= statement%>
+
+Html:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="anu.jsp">
+<input type="text" name="name" placeholder="name">
+<input type="submit" value="submit">
+</form>
+</body>
+</html>
+
+
+Jsp:
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Advanced Java Training</h1>
+<%= "Youe name is"+ request.getParameter("name") %>
+</body>
+</html>
+
+
+------------------------------------------------
+Action elements:
+
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<jsp:forward page="demo.jsp"></jsp:forward>
+</body>
+</html>
+
+
+demo:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Good Morning</h1>
+</body>
+</html>
+
+-----------------------------------------------
+
+HTML Forms:
+
+Html:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="anu.jsp">
+<input type="text" name="name" placeholder="name">
+<br><br>
+<input type="text" name="addr" placeholder="Address">
+<br><br>
+<input type="submit" value="submit">
+</form>
+</body>
+</html>
+
+Jsp:
+
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+ <ul>
+ 	<li>
+ 	<b>Name:</b>
+ 	<%= request.getParameter("name") %>
+ 	</li>
+ 	
+ 	<li>
+ 	<b>Address:</b>
+ 	<%= request.getParameter("addr") %>
+ 	</li>
+ 	
+ </ul>
+</body>
+</html>
+-----------------------------------------------
+
+MVC Architecture:
+
+M- Models
+V-Views
+C-Controller
+
+
+Models: Database related information
+
+Database
+tablename
+fileds
+
+Views:
+Front end page - view
+
+jsp,html 
+
+Controller: control over our data
+
+
+
+
+
+------------------------------------------
+Session handling:
+
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+<%
+Date createtime=new Date(session.getCreationTime());
+Date accesstime=new Date(session.getLastAccessedTime());
+
+String title="Hello welcome back";
+String uid=new String("anup");
+if(session.isNew()) {
+	title="Hello welcome";
+	session.setAttribute(title, uid);
+	
+}
+session.setAttribute(title,uid);
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<ul>
+	<li>
+	<% out.print(createtime); %>
+	</li>
+	
+	<li>
+	<% out.print(accesstime); %>
+	</li>
+	
+	<li>
+	<% out.print(uid); %>
+	</li>
+</ul>
+</body>
+</html>
+
+-------------------------------------
+JSP-Auto refresh:
+
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+response.setIntHeader("Refresh", 10);
+Calendar z=new GregorianCalendar();
+int hour=z.get(Calendar.HOUR);
+int min=z.get(Calendar.MINUTE);
+int sec=z.get(Calendar.SECOND);
+String t=hour+":"+min+":"+sec;
+out.print("Time:"+t);
+
+%>
+</body>
+</html>
+-------------------------------------------------
+Variables: storage or memory location
+
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%! int a=10;int b=5;%>
+<% out.println(a+b); %>
+
+</body>
+</html>
+
+Operator:
+
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%! int a=10;int b=5;%>
+<% out.println(a+b); %>
+<% out.println(a-b); %>
+<% out.println(a*b); %>
+<% out.println(a/b); %>
+
+</body>
+</html>
+
+
+Relational:
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%! int a=10;int b=5;%>
+<% out.println(a>=b); %>
+<% out.println(a<=b); %>
+<% out.println(a!=b); %>
+<% out.println(a==b); %>
+
+
+
+</body>
+</html>
+
+Logical Operator:
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%! int a=10;int b=5;%>
+<% out.println(a>5 && b<=5); %>
+
+
+
+
+</body>
+</html>
+
+
+
+Or:
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%! int a=10;int b=5;%>
+<% out.println(a<5 || b<=5); %>
+
+
+
+
+</body>
+</html>
+
+Not:
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%! int a=10;int b=5;%>
+<% out.println (!(a<5 || b<=5)); %>
+
+
+
+
+</body>
+</html>
+
+-----------------------------------------------------
+Control Flow Statements:
+
+1.Decision making stmt:
+if
+if-else
+else if
+nested if
+
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%! int a=10;int b=5;%>
+<% if(a<5){
+out.println("true");
+}
+else{
+	out.println("false");
+}
+	%>
+
+</body>
+</html>
+
+2.Looping stmt:
+for
+while
+do-while
+---------------------------------
+
+Function:
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<button type="submit" onClick="Myfun()">Date</button>
+<h1 id="test"></h1>
+<script type="text/javascript">
+ function Myfun(){
+	 var z=new Date();
+	 document.getElementById("test").innerHTML=z;
+ }
+</script>
+
+</body>
+</html>
+
+-----------------------------------------------------
+Error Handling:
+
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<button type="submit" onClick="Myfun()">Date</button>
+<h1 id="test"></h1>
+<script type="text/javascript">
+ function Myfun(){
+	 try{
+	 var z1=new Date();
+	 document.getElementById("test").innerHTML=z1;
+	 }
+	 catch(err){
+		 document.getElementById("test").innerHTML="error plz check";
+	 }
+ }
+</script>
+
+</body>
+</html>
+
+------------------------------------------------------------------
+Event handling:
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<button type="submit" onClick="this.innerHTML=Date()">Date</button>
+<h1 id="test"></h1>
+
+</body>
+</html>
+---------------------------------
+Validations:
+<%@ page contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" %>
+<%@ page import="java.io.*, java.util.*" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<input type="number" min="1" max="10" />
+
+</body>
+</html>
+--------------------------------------------------
+Learned:
+
+-Java
+-Web Designing
+-Sql, Oracle
+-Servlet
+-JSP
+
+Project on JSP/JavaScript/Servlets/JDBC:
+
+Online Book Shopping Project: MVC, RestAPI - CRUD
+
+step 1:Go to Eclipse
+Step 2: file > new > dynamic web project
+Step 3: new project name > next > finish
+Step 4:open project structure
+Step 5:Go to webapp > WEBINFO > lib  > add 2 jar file(ojdbc6, jstl)
+Step 6: Goto WEBINFO >> new file  
+
+Filename: database.sql
+
+create table mybook
+(
+	id number(5) primary key,
+	title varchar2(50) not null,
+	author varchar2(50),
+	price number(5)
+);
+
+ create sequence book_seq_id start with 1 nocache;
+
+create table mybook
+(
+	id number(5) primary key,
+	title varchar2(50) not null,
+	author varchar2(50),
+	price number(5)
+);
+
+ create sequence book_seq_id start with 1 nocache;
+ 
+ insert into mybook values(book_seq_id.nextval, 'Java',
+ 'Bhavatharani',750);
+ 
+ insert into mybook values(book_seq_id.nextval, 'Python',
+ 'Keerthi',950);
+ 
+ insert into mybook values(book_seq_id.nextval, 'Angular',
+ 'Anupriyan',650);
+ 
+
+Step 7: create sequence book_seq_id start with 1 nocache;
+
+
+created sequence
+
+Step 8:Goto Run SqlCommand line 
+
+Inser query execute
+
+
+Step 9: create header.html file in webapp
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+	<div class="menu">
+		<a href="home.jsp">Home</a>
+		<a href="">Add Book</a>
+		<a href="">List Book</a>
+		<a href="">Search Book</a>
+		<a href="">Contact</a>
+		
+	</div>
+</div>
+</body>
+</html>
+
+Style.css
+
+@charset "ISO-8859-1";
+.menu{
+	
+	background-color:yellow;
+	height:33px;
+	
+}
+a{
+	font-size:18px;
+	color:red;
+	padding:10px 10px;
+	text-decoration:none;
+}
+
+hope.jsp
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<%@ include file="header.html" %>
+</body>
+</html>
+
+step 10:
+GOTO webapp > create new jsp file
+
+listbook.jsp:
+
+step 11:
+goto project > right click > create lister  > packagename  > classname  > finish
+
+package listeners;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
+
+import oracle.jdbc.pool.OracleDataSource;
+
+
+@WebListener
+public class DatabaseListener implements ServletContextListener {
+
+   
+    public DatabaseListener() {
+        
+    }
+
+	
+    public void contextDestroyed(ServletContextEvent sce)  { 
+         
+    }
+
+	
+    public void contextInitialized(ServletContextEvent sce)  { 
+    	//create data source
+    	ServletContext c=sce.getServletContext();
+    	try {
+    		OracleDataSource od=new OracleDataSource();
+    		od.setUser("system");
+    		od.setPassword("anup");
+    		od.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+    		c.setAttribute("OracleDataSource", od);
+    	}
+    	catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}
+        
+    }
+	
+}
+
+
+step 12: again goto listbook.jsp
+
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>List of Books</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<%@ include file="header.html" %>
+<h1>List of Books</h1>
+	<sql:query var="books" dataSource="${applicationScope.OracleDataSource }">
+		select * from mybook
+		order by id
+	</sql:query>
+	
+	<table>
+	<tr>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Price</th>
+		
+	</tr>
+	
+	
+	<c:forEach var="book" items="${books.rows}">
+		<tr>
+			<td>${book.title }</td>
+			<td>${book.author }</td>
+			<td>${book.price}</td>
+		</tr>
+	</c:forEach>
+	
+	</table>
+</body>
+</html>
+
+step 13:
+create file addbook.jsp
+
+
+addbook.jsp:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Book</title>
+<link rel="stylesheet" href="style.css"/>
+<style type="text/css">
+input{
+width:350px;
+height:35px;
+}
+form{
+
+background-color:pink;
+}
+</style>
+</head>
+<body>
+<%@ include file="header.html" %>
+<form action="addbook.jsp" method="post">
+	<h1>Add Book</h1>
+	<input type="text" name="title" value="${param. title}" placeholder="Title"/>
+	<br><br>
+	<input type="text" name="author" value="${param. author}" placeholder="Author"/>
+	<br><br>
+	<input type="number" name="price" value="${param. price}" placeholder="price"/>
+	<br><br>
+	<input type="submit" value="Add Book"/>
+	
+</form>
+
+<c:if test="${!empty param.title}">
+	<sql:update var="count" dataSource="${applicationScope.OracleDataSource }">
+		insert into mybook values(book_seq_id.nextval,?,?,?)
+		<sql:param value="${param. title}"/>
+		<sql:param value="${param. author}"/>
+		<sql:param value="${param. price}"/>
+		
+	</sql:update>
+     <c:if test="${count >0}">
+     <h3>Book has been added successfully</h3>
+     </c:if>
+     
+      <c:if test="${count ==0}">
+     <h3>Error in adding book</h3>
+     </c:if>
+     
+</c:if>
+
+</body>
+</html>
+
+step 14:
+goto listbook.jsp
+
+2 head( edit, delete)
+
+<th>Edit</th>
+		<th>Delete</th>
+
+
+2 data(td tag)
+
+<td><a class="aa" href="edit.jsp?id=${book.id}">Edit</a></td>
+			<td><a class="ab" href="delete.jsp?id=${book.id}">Delete</a></td>
+
+step 14:
+create 2 jsp page in webapp
+
+-edit.jsp
+-delet.jsp
+
+
+step 15:goto edit.jsp
+
+edit.jsp:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Book</title>
+<link rel="stylesheet" href="style.css"/>
+<style type="text/css">
+input{
+width:350px;
+height:35px;
+}
+form{
+
+background-color:pink;
+}
+</style>
+</head>
+<body>
+
+<c:if test="${!empty param.id}">
+	<sql:query var="book" dataSource="${applicationScope.OracleDataSource }">
+		select * from mybook
+		where id =?
+		<sql:param value="${param.id }"></sql:param>
+	</sql:query>
+     
+</c:if>
+
+<%@ include file="header.html" %>
+<form action="update.jsp">
+<input type="hidden" value="${param.id }" name="id" />
+	<h1>Update Book</h1>
+	<input type="text" name="title" value="${book.rows[0].title}" placeholder="Title"/>
+	<br><br>
+	<input type="text" name="author" value="${book.rows[0]. author}" placeholder="Author"/>
+	<br><br>
+	<input type="number" name="price" value="${book.rows[0]. price}" placeholder="price"/>
+	<br><br>
+	<input type="submit" value="Add Book"/>
+	
+</form>
+
+
+
+</body>
+</html>
+
+
+update.jsp:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
+
+<c:if test="${!empty param.id}">
+	<sql:update var="count" dataSource="${applicationScope.OracleDataSource }">
+		update mybook set title=?,author=?, price=?
+		where id= ?
+		<sql:param value="${param. title}"/>
+		<sql:param value="${param. author}"/>
+		<sql:param value="${param. price}"/>
+		<sql:param value="${param. id}"/>
+		
+	</sql:update>
+     <c:redirect url="listbook.jsp"></c:redirect>
+     
+</c:if>
+
+
+
+step 16:
+goto delete.jsp
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
+<c:if test="${!empty param.id}">
+	<sql:update var="count" dataSource="${applicationScope.OracleDataSource }">
+		delete from mybook 
+		where id=?
+		<sql:param value="${param. id}"/>
+	
+	</sql:update>
+   <c:redirect url="listbook.jsp"></c:redirect>
+     
+</c:if>
+
+
+
+step 17: create file search.jsp
+
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Search Books</title>
+<link rel="stylesheet" href="style.css"/>
+<style type="text/css">
+table{
+	width:100%;
+	
+}
+th,td{
+	border:1px solid blue;
+	padding:10px;
+}
+th{
+	color:pink;
+	background-color:green;
+}
+.aa{
+color:red;
+
+}
+.ab{
+color:brown;
+}
+</style>
+</head>
+<body>
+<%@ include file="header.html" %>
+
+<form action="search.jsp" method="post">
+	<h1>Search Books</h1>
+
+	<input type="text" name="title" value="${param. title}" placeholder="Title"/>
+	<br><br>
+	
+	<input type="submit" value="Search Book"/>
+	
+</form>
+
+
+	<sql:query var="books" dataSource="${applicationScope.OracleDataSource }">
+		select * from mybook
+		where instr(upper(title),?) >=1
+		order by id
+		<sql:param value="${param.title.toUpperCase() }"></sql:param>
+	</sql:query>
+	
+	<table>
+	<tr>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Price</th>
+		
+		
+	</tr>
+	
+	
+	<c:forEach var="book" items="${books.rows}">
+		<tr>
+			<td>${book.title }</td>
+			<td>${book.author }</td>
+			<td>${book.price}</td>
+			
+		</tr>
+	</c:forEach>
+	
+	</table>
+</body>
+</html>
+
+
+step 18: create a new page  contact.jsp
+
+map : https://www.mapsdirections.info/en/custom-google-maps/
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="style.css"/>
+<style type="text/css">
+h4{
+color:red;
+text-align:center;
+font-size:30px;
+}</style>
+</head>
+<body>
+<%@ include file="header.html" %>
+<div>
+<h4>R.K.Salai, Mylapore<br><br>
+Chennai, Tamilnadu.</h4>
+<br><br>
+<hr>
+<div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Livewire%20R.K.%20Salai%20mylapore+(Livewire)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/sport-gps/"></a></iframe></div>
+</div>
+</body>
+</html>
+
+------------------------------------------------------
+
+Spring Boot Introduction:
+
+-Spring Boot is Java framework
+-Open source
+-MVC Architecture
+	-Model
+	-Views
+	-Controller
+
+Feature:
+-default configrations
+-Easy maintenance
+-Embedded tomcat server
+-Microservice
+
+Spring Boot Version:
+-came in the year 2012, V 1.0
+-latest verion is 3.0
+
+Spring vs Spring Boot vs Spring MVC:
+
+Spring - open source light weight framework(JSP, JDBC, API)
+spring boot- open source framework, built on the top of spring(REST API, Microservice)
+-MVC Architecture
+	-Model
+	-Views
+	-Controller
+-----------------------------------------------
+
+Software tools:
+
+1.Eclipse STS(Spring Tool Suite)
+
+https://spring.io/tools
+
+Spring Tools 4 for Eclipse
+
+2.Mysql DB:
+
+https://dev.mysql.com/downloads/mysql/
+
+Windows (x86, 64-bit), ZIP Archive
+Debug Binaries & Test Suite	8.2.0	683.5M	
+Download
+
+3.Postman - API platform
+
+https://www.postman.com/downloads/
+
+----------------------------------------------
+Spring Boot Architecture:
+
+-4 Layers
+
+1.Presentation layer: Designing front end view 
+2.Business layer : Logic 
+3.persistence layer: databae storage logic
+4.Database layer : mysql DB
+
+---------------------------------------------------
+Spring Boot Annotations: metadata
+
+-------------------------------------------------
+How to create a basic application in Java Spring Boot:
+
+steps:
+1.https://start.spring.io/
+
+
+package com.example.keerthi;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class KeerthiApplication {
+
+	public static void main(String[] args) {
+		System.out.println("Hello Everyone");
+		SpringApplication.run(KeerthiApplication.class, args);
+	}
+
+}
+
+-----------------------------------------
+HTTP methods: 
+1.POST
+2.GET
+3.PUT
+4.DELETE
+
+Controller.java:
+
+package com.example.keerthi;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class Controller {
+ 
+	@GetMapping("/home")
+	public String home() {
+		String z="<html><body><h1>Hello world</h1>"
+				+ "</body></html>";
+		return z;
+	}
+}
+
+
+Main 
+
+package com.example.keerthi;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class KeerthiApplication {
+	
+	public static void main(String[] args) {
+		
+		SpringApplication.run(KeerthiApplication.class, args);
+	}
+
+}
+
+----------------------------------------------------------
+How to Get the Body of Request in Spring Boot?
+
+Main:
+
+package com.example.monika;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MonikaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MonikaApplication.class, args);
+	}
+
+}
+
+
+Employee:
+package com.example.monika;
+
+public class Employee {
+	//attribute
+	int id;
+	String name;
+	String addr;
+	
+	//constructor
+	public Employee(int id, String name, String addr) {
+		this.id=id;
+		this.name=name;
+		this.addr=addr;
+	}
+	//return
+	public String toString() {
+		return id+" "+name+" "+addr;
+	}
+
+}
+
+Controller:
+package com.example.monika;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class Controller {
+	
+    @GetMapping("/get")
+	public void getData() {
+	  //create object
+	  Employee obj=createEmployee();
+	  System.out.println(obj);
+  }
+  private Employee createEmployee() {
+	  return new Employee(3,"monika","Tamilnadu");
+  }
+}
+
+---------------------------------------------------------
+
+How to Make Put Request in Spring Boot?
+
+Main:
+package com.example.keerthiput;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class KeerthiputApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(KeerthiputApplication.class, args);
+	}
+
+}
+
+Controller:
+
+package com.example.keerthiput;
+
+import java.util.ArrayList;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class Controller {
+    ArrayList<Integer> z;
+   Controller(){
+	   z=new ArrayList<Integer>();
+	   z.add(50);
+	   z.add(55);
+	   z.add(60);
+   }
+   
+   @PutMapping("/change/{id}")
+   void change(@PathVariable int id) {
+	   System.out.println(z);
+	   z.remove(id);
+	   z.add(id, 80);
+	   System.out.println(z);
+   }
+}
+
+--------------------------------------------------
+Spring Boot – Code Structure
+
+Code Structure:
+Package:
+
+package com.example.keerthiput;
+
+-----Main class
+
+-controller
+-----controller class(Mapping)
+
+-service
+------service class(Logic)
+
+-repository
+--------repository class(database configuration)
+
+-model
+--------------entity/table name / field
+
+
+--------------------------------------------------------
+
+Spring Boot – RestTemplate
+
+-RestAPI (req,res)
+-HTTP Protocol
+-POST
+-GET
+-PUT
+-DELETE
+-PATCH
+-HEAD
+
+-atleast one of the standard method have to be used
+
+-------------------------------------------------------
+Spring Boot – Change Port
+
+application.properties
+
+server.port=8081
+
+--------------------------------------------------------
+Spring Boot – Scheduling
+
+Main:
+package com.example.monikaschedule;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+@SpringBootApplication
+@EnableScheduling
+public class MonikascheduleApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MonikascheduleApplication.class, args);
+	}
+
+}
+
+Schedular:
+package com.example.monikaschedule;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Schedular {
+	
+	@Scheduled(fixedDelay=5000)
+	public void scheduleTask() {
+		SimpleDateFormat d=new SimpleDateFormat(
+				"dd-MM-yyyy HH:mm:ss.SSS");
+		String s=d.format(new Date());
+		System.out.println("server running at"+s);
+		
+	}
+
+}
+
+-----------------------------------------------------------
+
+Spring Boot – Transaction Management Using @Transactional Annotation
+
+Model
+---entity----Employee
+---Table name
+----field
+
+Employee:
+
+package com.example.keerthitransaction.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@ToString
+@Table(name="EMP_INFO")
+public class Employee {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name=name;
+	}
+
+}
+
+---------
+repository:
+
+EmployeeRepository :
+
+package com.example.keerthitransaction.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.keerthitransaction.model.Employee;
+
+public interface EmployeeRepository extends JpaRepository<Employee,Integer>{
+
+}
+
+--------------
+EmployeeService:
+
+package com.example.keerthitransaction.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.example.keerthitransaction.model.Employee;
+import com.example.keerthitransaction.repository.EmployeeRepository;
+
+@Service
+public class EmployeeService {
+	
+	@Autowired
+	private EmployeeRepository er;
+	
+	@Transactional
+	public Employee addEmp(Employee emp) throws Exception{
+		Employee employeeSaveToDB=this.er.save(emp);
+		return employeeSaveToDB;
+	}
+	
+	
+}
+
+-------------------------
+
+Controller:
+
+package com.example.keerthitransaction.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.keerthitransaction.model.Employee;
+import com.example.keerthitransaction.service.EmployeeService;
+
+@RestController
+@RequestMapping("/api/employee")
+public class Controller {
+	
+	@Autowired
+	private EmployeeService empService;
+	
+	@PostMapping("/add")
+	public ResponseEntity<Employee>
+	saveEmployee(@RequestBody Employee empp) throws Exception{
+		
+		Employee employeeSaveToDB=this.empService.addEmp(empp);
+		return new ResponseEntity<Employee>(employeeSaveToDB,HttpStatus.CREATED);
+	}
+	
+	
+	
+	
+	
+
+}
+
+-----------------------
+application.properties
+
+spring.application.name=keerthitransaction
+server.port=8081
+
+spring.datasource.url=jdbc:mysql://localhost:3307/monika
+spring.datasource.username=root
+spring.datasource.password=anupriyan
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MYSQL57Dialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+--------------------------------------------------------------
+
+Spring Boot – Map Entity to DTO using ModelMapper:
+
+move from one layer to another layer
+ 5 - filed
+------------------------------------------------------------
+
+Spring Boot – Validation using Hibernate Validator
+
+@NotNull- field must not be null
+@NotEmpty - 
+@NotBlank-
+min
+max
+@Email
+
+
+    "trace": "org.springframework.transaction.TransactionSystemException: Could not commit JPA transaction\r\n\tat org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:570)\r\n\tat org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:743)\r\n\tat org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711)\r\n\tat org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:660)\r\n\tat org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:410)\r\n\tat org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)\r\n\tat org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)\r\n\tat org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:751)\r\n\tat org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:703)\r\n\tat com.example.keerthitransaction.service.EmployeeService$$SpringCGLIB$$0.addEmp(<generated>)\r\n\tat com.example.keerthitransaction.controller.Controller.saveEmployee(Controller.java:25)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:568)\r\n\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)\r\n\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)\r\n\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)\r\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:887)\r\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:798)\r\n\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\r\n\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)\r\n\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)\r\n\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)\r\n\tat org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)\r\n\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)\r\n\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\r\n\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\r\n\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\r\n\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\r\n\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\r\n\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\r\n\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)\r\n\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)\r\n\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)\r\n\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)\r\n\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)\r\n\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\r\n\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)\r\n\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)\r\n\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)\r\n\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)\r\n\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)\r\n\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)\r\n\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)\r\n\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)\r\n\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)\r\n\tat java.base/java.lang.Thread.run(Thread.java:833)\r\nCaused by: jakarta.persistence.RollbackException: Error while committing the transaction\r\n\tat org.hibernate.internal.ExceptionConverterImpl.convertCommitException(ExceptionConverterImpl.java:65)\r\n\tat org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:104)\r\n\tat org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:561)\r\n\t... 60 more\r\nCaused by: jakarta.validation.ConstraintViolationException: Validation failed for classes [com.example.keerthitransaction.model.Employee] during persist time for groups [jakarta.validation.groups.Default, ]\nList of constraint violations:[\n\tConstraintViolationImpl{interpolatedMessage='size must be between 3 and 30', propertyPath=name, rootBeanClass=class com.example.keerthitransaction.model.Employee, messageTemplate='{jakarta.validation.constraints.Size.message}'}\n]\r\n\tat org.hibernate.boot.beanvalidation.BeanValidationEventListener.validate(BeanValidationEventListener.java:151)\r\n\tat org.hibernate.boot.beanvalidation.BeanValidationEventListener.onPreInsert(BeanValidationEventListener.java:81)\r\n\tat org.hibernate.action.internal.EntityInsertAction.preInsert(EntityInsertAction.java:215)\r\n\tat org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:98)\r\n\tat org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:635)\r\n\tat org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:502)\r\n\tat org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:364)\r\n\tat org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:39)\r\n\tat org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)\r\n\tat org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1412)\r\n\tat org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:485)\r\n\tat org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:2301)\r\n\tat org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:1966)\r\n\tat org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:439)\r\n\tat org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:169)\r\n\tat org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:267)\r\n\tat org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:101)\r\n\t... 61 more\r\n",
+
+
+--------------------------------------
+Spring Boot – Logging 
+
+Main:
+
+package com.example.keerthilogger;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class KeerthiloggerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(KeerthiloggerApplication.class, args);
+	}
+
+}
+
+
+Controller:
+package com.example.keerthilogger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class Controller {
+	Logger l=LoggerFactory.getLogger(Controller.class);
+	
+	@RequestMapping("/logger")
+	public String log() {
+		l.debug("Debug");
+		l.info("information");
+		l.error("Error in program");
+		l.warn("warning message");
+		
+		return "logger factory";
+		
+	}
+
+}
+------------------------------------------
+Spring Boot – Auto-configuration
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+
+--------------------------------------------------
+Spring Boot – File Handling
+Main:
+package com.example.monikafileupload;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MonikafileuploadApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MonikafileuploadApplication.class, args);
+	}
+
+}
+
+
+Controller:
+package com.example.monikafileupload.controller;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+@Controller
+public class FileUploadController {
+	//path
+	private static String uploadfile="D://upload//";
+	
+	@RequestMapping("/upload")
+	public ModelAndView showUpload() {
+		return new ModelAndView("upload");
+	}
+	
+	@PostMapping("/upload")
+	public ModelAndView fileUpload(@RequestParam("file")
+	MultipartFile file, RedirectAttributes  redirectAttributes) {
+		if(file.isEmpty()) {
+			return new ModelAndView("status","message","Please select a file and upload");
+			
+		}
+		try {
+			byte[] bytes=file.getBytes();
+			Path path=Paths.get(uploadfile+file.getOriginalFilename());
+			Files.write(path, bytes);
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		return new ModelAndView("status","message","File uploaded successfully");
+	}
+	
+
+}
+
+
+application.prop
+
+spring.application.name=monikafileupload
+spring.mvc.view.prefix=/WEB-INF/jsp/
+spring.mvc.view.suffix=.jsp
+server.port=8081
+
+main >> webapp >> webinfo >> jsp
+
+upload.jsp
+
+<html>
+    <body>
+        <form action="/upload" enctype="multipart/form-data" method="post">
+            <input type="file" name="file">
+            <br><br>
+            <input type="submit" value="submit"/>
+
+        </form>
+    </body>
+</html>
+
+status.jsp
+<html>
+    <body>
+        <h1>File uploaded</h1>
+    </body>
+</html>
+---------------------------------------
+
+
+Spring Boot – Groovy Test Introduction
+package com.example.mygroovytezt;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class MygroovyteztApplicationTests {
+
+	@Test
+	void contextLoads() {
+		int a=10;
+		int b=50;
+		System.out.println(a+b);
+	}
+
+}
+
+-------------------------------------------------------------
+Spring Boot – Exception Handling:
+
+try {
+			byte[] bytes=file.getBytes();
+			Path path=Paths.get(uploadfile+file.getOriginalFilename());
+			Files.write(path, bytes);
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+
+
+---------------------------------------------------
+Spring Boot – Project Deployment Using Tomcat:
+
+-Apache TOmcat - embedded
+-Apache Tomcat as the default embedded container.
+
+
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.9)
+
+2024-03-21T09:56:13.482+05:30  INFO 16328 --- [           main] c.e.m.MonikafileuploadApplication        : Starting MonikafileuploadApplication using Java 17.0.7 with PID 16328 (C:\Users\Anupriyan\Downloads\monikafileupload\target\classes started by Anupriyan in C:\Users\Anupriyan\Downloads\monikafileupload)
+2024-03-21T09:56:13.490+05:30  INFO 16328 --- [           main] c.e.m.MonikafileuploadApplication        : No active profile set, falling back to 1 default profile: "default"
+2024-03-21T09:56:19.464+05:30  INFO 16328 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2024-03-21T09:56:19.503+05:30  INFO 16328 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-21T09:56:19.504+05:30  INFO 16328 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-03-21T09:56:20.619+05:30  INFO 16328 --- [           main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-03-21T09:56:20.671+05:30  INFO 16328 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-21T09:56:20.674+05:30  INFO 16328 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6414 ms
+2024-03-21T09:56:21.996+05:30  INFO 16328 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2024-03-21T09:56:22.024+05:30  INFO 16328 --- [           main] c.e.m.MonikafileuploadApplication        : Started MonikafileuploadApplication in 12.111 seconds (process running for 16.312)
+
+
+------------------------------------------------
+Spring Boot – Packaging
+
+Packaging
+-Jar :  Java Archive file
+
+-War : web Archive file
+
+----------------------------------------------
+
+Spring Boot – Thymeleaf with Example
+
+-Template Engine
+-Dynamic web page
+
+main:
+
+package com.example.keerthithymeleaf;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class KeerthithymeleafApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(KeerthithymeleafApplication.class, args);
+	}
+
+}
+
+
+controller:
+
+package com.example.keerthithymeleaf;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class MyController {
+	
+	@GetMapping({"/","/hello"})
+	public String hello(@RequestParam(value="name", 
+			defaultValue="Monika", required=true)
+	String name, Model model) {
+		model.addAttribute("name",name);
+		
+		return "hello";
+	}
+
+}
+
+template folder:
+
+hello.html
+
+<html>
+	<body>
+		<h1 th:text="'Hello,'+ ${name}+ "/>
+			</body>
+</html>
+
+---------------------------------------------------------
+Spring Boot – DevTools:
+
+-Depedencies
+-----------------------------------------------------
+
+Spring Boot –Difference Between @Service Annotation 
+Service Annotation :
+
+Main:
+
+package com.example.keerthiLogic;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+@SpringBootApplication
+public class KeerthiLogicApplication {
+	
+
+	public static void main(String[] args) {
+		
+		AnnotationConfigApplicationContext context
+	=new AnnotationConfigApplicationContext();
+	context.scan("com.example.keerthiLogic");
+	context.refresh();
+	
+	MyServcie m=context.getBean(MyServcie.class);
+	int facto=m.factorial(0);
+	System.out.println(facto);
+	context.close();
+	
+		SpringApplication.run(KeerthiLogicApplication.class, args);
+	}
+
+}
+
+
+MyServcie:
+
+package com.example.keerthiLogic;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyServcie {
+	//logic
+	public int factorial(int z) {
+		if(z==0)
+			return 1;
+		return z * factorial(z-1);
+	}
+
+}
+
+----------------------------------------------------
+@Repository Annotation
+
+-DB Configuration and Query
+---------------------------------------------------
+How to Make a Simple RestController in Spring Boot?
+
+
+Controller:
+
+package com.example.keerthiController;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class Controller {
+	
+	@GetMapping("/add/{name}/{addr}")
+	public void add(@PathVariable("name") String name,
+			@PathVariable("addr") String addr) {
+		System.out.println(name);
+		System.out.println(addr);
+		
+	}
+
+}
+
+
+main:
+
+package com.example.keerthiController;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class KeerthiControllerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(KeerthiControllerApplication.class, args);
+	}
+
+}
+
+----------------------------------------------------------------
+How to Implement Simple Authentication in Spring Boot?
+
+Main:
+package com.example.monikaAuth;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MonikaAuthApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MonikaAuthApplication.class, args);
+	}
+
+}
+
+
+Controller:
+package com.example.monikaAuth.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+@RestController
+@RequestMapping("rest/auth")
+public class MyController {
+	
+	@GetMapping("/hello")
+	public String hello() {
+		return "Hello keerthi, logged in";	}}
+spring.application.name=monikaAuth
+server.port=8081
+spring.security.user.name=admin
+spring.security.user.password=anupriyan
+---------------------------------------------
+
+What is Command Line Runner Interface in Spring Boot
+
+GUI / CLI :
+
+package com.example.monikaAuth;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MonikaAuthApplication {
+
+	public static void main(String[] args) {
+		System.out.println("Hello everyone");
+		SpringApplication.run(MonikaAuthApplication.class, args);
+	}
+
+}
+
+------------------------------------------------------------
+Difference Between Spring Boot Starter Web and Spring Boot Starter Tomcat
+
+Starter Web:
+
+Starter Tomcat:
+
+------------------------------------------------------------
+Creating a Spring Boot App using Dockerfile:
+
+package com.example.myDocke;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication
+@RestController
+public class MyDockeApplication {
+	
+	@RequestMapping("/")
+	public String home() {
+		return "Dockerized file";
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(MyDockeApplication.class, args);
+	}
+
+}
+-------------------------------------------
+Spring Boot with REST API:
+
+REST : Representation state transfer
+
+
+-API allow us to provide HTTP service
+-HTTP methods
+-create(post)
+-read(fetch)
+-update(put)
+-delete(delete)
+------------------------------------------------
+Spring Boot with Database:
+-Mysql
+
+-CRUD Operation
+
+-create(post)
+-read(fetch)
+-update(put)
+-delete(delete)
+
+
+
+---------------------------------
+
+Spring Boot Microservices:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Spring Boot – Cache Provider
+
+
+
+
+
+
+
+
+
+
