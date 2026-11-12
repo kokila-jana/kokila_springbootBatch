@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+ <!--<ul>
+	<li th:each="Stud:${Student}"
+	th:text="${Stud}">
+	</li>
+  </ul>-->
+  
+  <!--<h1 th:text="${name}"></h1>-->
+  
+  <!--<h1 th:if="${age>18}">
+	eligible for vote...
+  </h1>-->
+  
+  <h1 th:object="${Entity}"
+  th:text="*{name}"
+  ></h1>
+</body>
+</html>
